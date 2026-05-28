@@ -69,3 +69,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # employee-management
 ITELEC 4 CRUD
 >>>>>>> 5392d42a0537ed30f67a1a51ab8ec5d4d071be9c
+
+git remote remove origin
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/2023310508-lgtm/finalexam_Urquico_Cuneta.git
+git push -u origin main
