@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('employee/create', [\App\Http\Controllers\employeecontroller::class, 'create'])->name('employee.create');
     Route::get('employee/{id}/edit', [\App\Http\Controllers\employeecontroller::class, 'edit'])->name('employee.edit');
     Route::put('employee/{id}', [\App\Http\Controllers\employeecontroller::class, 'update'])->name('employee.update');
-    Route::delete('employee/{id}', [\App\Http\Controllers\employeecontroller::class, 'destroy'])->name('employee.destroy');
+    Route::delete('employee/{id}', [\App\Http\Controllers\employeecontroller::class, 'destroy'])->name('employee.delete');
     
 
     

@@ -54,6 +54,11 @@
                           @error('dob') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
                         <div class="form-group col-6">
+                          <label for="exampleInputPassword1">Contact No.</label>
+                          <input type="number" class="form-control" id="contactNo" name="contactNo" placeholder="Enter your Contact No.">
+                          @error('contactNo') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="form-group col-6">
                         </div>
                         <button type="submit" class="btn btn-success col-6 m-auto">Submit Student Record</button>
                       </div>

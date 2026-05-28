@@ -10,7 +10,8 @@ class employeecontroller extends Controller
 {
     public function index()
     {   
-        return view ('employee.index');
+        $employees = employee::all();
+        return view('employee.index', compact('employees'));
     }
 
 
@@ -36,15 +37,27 @@ class employeecontroller extends Controller
 
     public function edit( int $id)
     {
-        $employee = employee::find($id);
-        return view ('employee.edit', compact('employee'));
+        $employees = employee::find($id);
+        return view ('employee.edit', compact('employees'));
     }
 
     public function update(Request $request, int $id) {
-        //
+        $employee = employee::find($id);
+        $employee->fname = $request->input('fname');
+        $employee->mname = $request->input('mname');
+        $employee->lname = $request->input('lname');
+        $employee->address = $request->input('address');
+        $employee->dob = $request->input('dob');
+        $employee->contactNo = $request->input('contactNo');
+        $employee->save();
+
+        return redirect()->route('employee.index')->with('success', 'Employee updated successfully.');
     }
 
     public function destroy(int $id){
-      //
+        $employee = employee::find($id);
+        $employee->delete();
+
+        return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
     }
 }

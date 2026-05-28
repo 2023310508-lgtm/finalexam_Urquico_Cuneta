@@ -16,7 +16,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <a href="#" class="btn btn-info">Add New Employee</a> <br> <br>
+            <a href="{{ route('employee.create') }}" class="btn btn-success mb-3">Add Employee</a>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -34,26 +34,30 @@
                                         </tr>
                                     </thead>
                                     <tbody  >
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td> 
-                                                <a href="#" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-md active" role="button" aria-pressed="true">Delete</a>
-                                            </td>
-                                        </tr>
+                                        @foreach ($employees as $employee)
+                                            <tr>
+                                                <td>{{ $employee->id }}</td>
+                                                <td>{{ $employee->fname }}</td>
+                                                <td>{{ $employee->lname }}</td>
+                                                <td>{{ $employee->mname }}</td>
+                                                <td>{{ $employee->address }}</td>
+                                                <td>{{ $employee->dob }}</td>
+                                                <td>
+                                                    <a href="{{ route('employee.edit', $employee->id) }}" class="btn btn-primary">Edit</a>
+                                                    <form action="{{ route('employee.delete', $employee->id) }}" method="POST" style="display: inline-block">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </div>
-    <!-- /.content -->
 @endsection
